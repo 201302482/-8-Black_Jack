@@ -22,6 +22,7 @@ public class Game {
             do {
                 System.out.println("How many dollars do you want to bet?  (Enter 0 to end.)");
                 bet = scanner.nextInt();
+                scanner.nextLine();
                 if (bet < 0 || bet > money) {
                     System.out.println("betting money must be between 0 to " + money);
                 }
@@ -58,6 +59,26 @@ public class Game {
         dealer.addCard(deck.dealCard());
         dealer.addCard(deck.dealCard());
 
+        if (dealer.getBlackjackRank() == 21) {
+            System.out.println("Dealer has the " + dealer.getCard(0)
+                    + " and the " + dealer.getCard(1) + ".");
+            System.out.println("User has the " + player.getCard(0)
+                    + " and the " + player.getCard(1) + ".");
+            System.out.println();
+            System.out.println("Dealer has Blackjack.  Dealer wins.");
+            return GameResult.LOSE;
+        }
+
+        if (player.getBlackjackRank() == 21) {
+            System.out.println("Dealer has the " + dealer.getCard(0)
+                    + " and the " + dealer.getCard(1) + ".");
+            System.out.println("User has the " + player.getCard(0)
+                    + " and the " + player.getCard(1) + ".");
+            System.out.println();
+            System.out.println("You have Blackjack.  You win.");
+            return GameResult.WIN;
+        }
+
         while(true) {
             System.out.print("Your cards are:");
             for ( int i = 0; i < player.getCardCount(); i++ )
@@ -69,8 +90,8 @@ public class Game {
             System.out.print("Hit (H) or Stand (S)? ");
             char userAction;
             do {
-                scanner.nextLine();
                 userAction = Character.toUpperCase(scanner.nextLine().charAt(0));
+                System.out.println("sfsfs");
                 if (userAction != 'H' && userAction != 'S')
                     System.out.println("Please respond H or S:  ");
             } while (userAction != 'H' && userAction != 'S');
