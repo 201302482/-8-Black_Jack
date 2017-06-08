@@ -1,5 +1,6 @@
 package com.hw.team8.blackjack;
 
+import java.io.BufferedReader;
 import java.util.Vector;
 
 /**
@@ -83,7 +84,10 @@ public class PlayerHand {
     }
 
     public String toString(){
-
-        return "";
+        StringBuffer stringBuffer = new StringBuffer("Hand List : "+getCard(0));
+        for(int i=1;i<getCardCount();i++){
+            stringBuffer.append(", "+getCard(i));
+        }
+        return stringBuffer+"\n";
     }
 }
