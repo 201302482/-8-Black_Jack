@@ -30,12 +30,4 @@ public class DeckTest {
         deck.dealCard();
         assertThat(deck.cardsLeft(),is(51));
     }
-    @Test
-    public void 덱_셔플하기(){
-        Deck deck = new Deck();
-        Deck shuffledDeck = new Deck();
-        shuffledDeck.shuffle();
-        System.out.println(deck.getDeck());
-        System.out.println(shuffledDeck.getDeck());
-    }
 }
