@@ -3,6 +3,7 @@ package com.hw.team8.blackjack;
 import lombok.Data;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by com on 2017-06-08.
@@ -21,7 +22,11 @@ public class Deck {
             }
         }
     }
+    public void shuffle(){
+        Collections.shuffle(deck);
+    }
     public int size() {
         return this.deck.size();
     }
+
 }

@@ -33,17 +33,18 @@ public class PlayerHand {
             hand.removeElementAt(position);
     }
 
-    public int getCardCount() {
-
-        return 0;
-    }
-
     public Card getCard(int position) {
         if (position >= 0 && position < hand.size())
             return (Card)hand.elementAt(position);
         else
             throw new NoSuchCardException();
     }
+
+    public int getCardCount() {
+        return hand.size();
+    }
+
+
 
     public void sortBySuit() {
 
