@@ -43,12 +43,27 @@ public class PlayerHandTest {
         Card card = new Card(1,Suit.CLUBS);
         playerHand.addCard(card);
         playerHand.removeCard(card);
-        assertThat(playerHand.getCard(0), is(card));
+        Card playersCard = playerHand.getCard(0);
     }
 
     @Test
     public void hand를_아무카드도_넣지않았다면_size는_0이다(){
         PlayerHand playerHand = new PlayerHand();
         assertThat(playerHand.getCardCount(), is(0));
+    }
+
+    @Test
+    public void hand가_가지고있는_카드를_Suit별로_정렬하면_스페이드_하트_클로버_다이아몬드순으로_정렬된다(){
+        PlayerHand playerHand = new PlayerHand();
+        Card card1 = new Card(1,Suit.SPADES);
+        Card card2 = new Card(1,Suit.HEARTS);
+        Card card3 = new Card(1,Suit.CLUBS);
+        Card card4 = new Card(1,Suit.DIAMONDS);
+        playerHand.addCard(card2);
+        playerHand.addCard(card3);
+        playerHand.addCard(card1);
+        playerHand.addCard(card4);
+        playerHand.sortBySuit();
+        System.out.println(playerHand.getHand());
     }
 }
