@@ -63,7 +63,7 @@ public class PlayerHand {
         hand = newHand;
     }
 
-    public void sortByValue() {
+    public void sortByRank() {
         Vector<Card> newHand = new Vector<Card>();
         while (hand.size() > 0) {
             int pos = 0;  // Position of minimal card.
