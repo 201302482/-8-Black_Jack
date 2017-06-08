@@ -14,4 +14,18 @@ public class DeckTest {
         Deck deck = new Deck();
         assertThat(deck.cardsLeft(),is(52));
     }
+    @Test
+    public void 덱_셔플하기(){
+        Deck deck = new Deck();
+        Deck shuffledDeck = new Deck();
+        shuffledDeck.shuffle();
+        System.out.println(deck.getDeck());
+        System.out.println(shuffledDeck.getDeck());
+    }
+    @Test
+    public void 덱에서_카드_한장_가져오기(){
+        Deck deck = new Deck();
+        deck.dealCard();
+        assertThat(deck.cardsLeft(),is(51));
+    }
 }
