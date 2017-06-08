@@ -58,6 +58,26 @@ public class Game {
         dealer.addCard(deck.dealCard());
         dealer.addCard(deck.dealCard());
 
+        if (dealer.getBlackjackRank() == 21) {
+            System.out.println("Dealer has the " + dealer.getCard(0)
+                    + " and the " + dealer.getCard(1) + ".");
+            System.out.println("User has the " + player.getCard(0)
+                    + " and the " + player.getCard(1) + ".");
+            System.out.println();
+            System.out.println("Dealer has Blackjack.  Dealer wins.");
+            return GameResult.LOSE;
+        }
+
+        if (player.getBlackjackRank() == 21) {
+            System.out.println("Dealer has the " + dealer.getCard(0)
+                    + " and the " + dealer.getCard(1) + ".");
+            System.out.println("User has the " + player.getCard(0)
+                    + " and the " + player.getCard(1) + ".");
+            System.out.println();
+            System.out.println("You have Blackjack.  You win.");
+            return GameResult.WIN;
+        }
+
         while(true) {
             System.out.print("Your cards are:");
             for ( int i = 0; i < player.getCardCount(); i++ )
