@@ -35,7 +35,7 @@ public class PlayerHand {
 
     public Card getCard(int position) {
         if (position >= 0 && position < hand.size())
-            return (Card)hand.elementAt(position);
+            return hand.elementAt(position);
         else
             throw new NoSuchCardException();
     }
@@ -44,10 +44,23 @@ public class PlayerHand {
         return hand.size();
     }
 
-
-
     public void sortBySuit() {
-
+        Vector<Card> newHand = new Vector<Card>();
+        while (hand.size() > 0) {
+            int pos = 0;  // Position of minimal card.
+            Card card1 = hand.elementAt(0);  // Minumal card.
+            for (int i = 1; i < hand.size(); i++) {
+                Card card2 = hand.elementAt(i);
+                if ( card2.getSuit().getSuitValue() < card1.getSuit().getSuitValue() ||
+                        (card2.getSuit() == card1.getSuit() && card2.getRank() < card1.getRank()) ) {
+                    pos = i;
+                    card1 = card2;
+                }
+            }
+            hand.removeElementAt(pos);
+            newHand.addElement(card1);
+        }
+        hand = newHand;
     }
 
     public void sortByValue() {
