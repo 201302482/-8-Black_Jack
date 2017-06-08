@@ -1,35 +1,36 @@
 package com.hw.team8.blackjack;
 
-import lombok.Data;
-
 import java.util.Vector;
 
 /**
  * Created by com on 2017-06-08.
  */
-@Data
 public class PlayerHand {
     private Vector<Card> hand;   // The cards in the hand.
 
     public PlayerHand() {
-
         hand = new Vector<Card>();
     }
 
-    public void clear() {
-
+    public Vector<Card> getHand(){
+        return hand;
     }
 
     public void addCard(Card c) {
-
+        hand.addElement(c);
     }
 
-    public void removeCard(Card c) {
+    public void clear() {
+        hand.removeAllElements();
+    }
 
+    public void removeCard(Card card) {
+        hand.removeElement(card);
     }
 
     public void removeCard(int position) {
-
+        if (position >= 0 && position < hand.size())
+            hand.removeElementAt(position);
     }
 
     public int getCardCount() {
@@ -38,8 +39,10 @@ public class PlayerHand {
     }
 
     public Card getCard(int position) {
-
-        return null;
+        if (position >= 0 && position < hand.size())
+            return (Card)hand.elementAt(position);
+        else
+            throw new NoSuchCardException();
     }
 
     public void sortBySuit() {

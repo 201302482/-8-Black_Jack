@@ -6,7 +6,6 @@ import lombok.Data;
  */
 @Data
 class Card implements Comparable<Card>{
-
     private int rank;
     private Suit suit;
 
