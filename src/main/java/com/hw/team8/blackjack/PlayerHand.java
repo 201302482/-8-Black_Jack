@@ -12,16 +12,15 @@ public class PlayerHand {
     private Vector<Card> hand;   // The cards in the hand.
 
     public PlayerHand() {
-
         hand = new Vector<Card>();
     }
 
-    public void clear() {
-
+    public void addCard(Card c) {
+        hand.addElement(c);
     }
 
-    public void addCard(Card c) {
-
+    public void clear() {
+        hand.removeAllElements();
     }
 
     public void removeCard(Card c) {
