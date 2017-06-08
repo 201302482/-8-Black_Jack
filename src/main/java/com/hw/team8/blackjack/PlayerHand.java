@@ -70,8 +70,8 @@ public class PlayerHand {
             Card card1 = hand.elementAt(0);  // Minumal card.
             for (int i = 1; i < hand.size(); i++) {
                 Card card2 = hand.elementAt(i);
-                if ( card2.getSuit().getSuitValue() < card1.getSuit().getSuitValue() ||
-                        (card2.getSuit() == card1.getSuit() && card2.getRank() < card1.getRank()) ) {
+                if ( card2.getRank() < card1.getRank() ||
+                        (card2.getRank() == card1.getRank() && card2.getSuit().getSuitValue() < card1.getSuit().getSuitValue()) ) {
                     pos = i;
                     card1 = card2;
                 }
