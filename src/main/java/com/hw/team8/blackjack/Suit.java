@@ -14,7 +14,7 @@ public enum Suit {
     Suit(int suit) {
         this.suit = suit;
     } //construtor
-    public int getSuit() {
+    public int getSuitValue() {
         return this.suit;
     }
 }
