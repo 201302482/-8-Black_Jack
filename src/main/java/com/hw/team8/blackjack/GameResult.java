@@ -17,3 +17,4 @@ public enum GameResult {
         return this.gameResult;
     }
 }
+
