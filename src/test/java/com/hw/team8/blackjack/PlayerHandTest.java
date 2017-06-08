@@ -66,4 +66,19 @@ public class PlayerHandTest {
         playerHand.sortBySuit();
         System.out.println(playerHand.getHand());
     }
+
+    @Test
+    public void hand가_가지고있는_카드를_Rank별로_정렬하면_오름차순으로_정렬된다(){
+        PlayerHand playerHand = new PlayerHand();
+        Card card1 = new Card(1,Suit.SPADES);
+        Card card2 = new Card(5,Suit.HEARTS);
+        Card card3 = new Card(7,Suit.CLUBS);
+        Card card4 = new Card(9,Suit.DIAMONDS);
+        playerHand.addCard(card2);
+        playerHand.addCard(card3);
+        playerHand.addCard(card1);
+        playerHand.addCard(card4);
+        playerHand.sortByRank();
+        System.out.println(playerHand.getHand());
+    }
 }

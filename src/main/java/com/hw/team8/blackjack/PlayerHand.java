@@ -63,8 +63,23 @@ public class PlayerHand {
         hand = newHand;
     }
 
-    public void sortByValue() {
-
+    public void sortByRank() {
+        Vector<Card> newHand = new Vector<Card>();
+        while (hand.size() > 0) {
+            int pos = 0;  // Position of minimal card.
+            Card card1 = hand.elementAt(0);  // Minumal card.
+            for (int i = 1; i < hand.size(); i++) {
+                Card card2 = hand.elementAt(i);
+                if ( card2.getRank() < card1.getRank() ||
+                        (card2.getRank() == card1.getRank() && card2.getSuit().getSuitValue() < card1.getSuit().getSuitValue()) ) {
+                    pos = i;
+                    card1 = card2;
+                }
+            }
+            hand.removeElementAt(pos);
+            newHand.addElement(card1);
+        }
+        hand = newHand;
     }
 
     public String toString(){
