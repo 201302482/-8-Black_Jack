@@ -30,5 +30,4 @@ public class DeckTest {
         deck.dealCard();
         assertThat(deck.cardsLeft(),is(51));
     }
-
 }
