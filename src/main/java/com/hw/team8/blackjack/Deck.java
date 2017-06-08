@@ -8,6 +8,7 @@ import java.util.Collections;
 /**
  * Created by com on 2017-06-08.
  */
+
 @Data
 public class Deck {
     private ArrayList<Card> deck;
