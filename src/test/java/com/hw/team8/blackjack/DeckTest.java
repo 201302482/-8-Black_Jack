@@ -24,5 +24,4 @@ public class DeckTest {
         System.out.println(deck.getDeck());
         System.out.println(shuffledDeck.getDeck());
     }
-
 }
