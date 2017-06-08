@@ -20,4 +20,15 @@ public class PlayerTest {
         playerHand.addCard(card1);
         assertThat(playerHand.getBlackjackRank(), is(19));
     }
-}
+
+    @Test
+    public void Player가_가지고있는_카드의_합은21다(){
+        Player playerHand = new Player();
+        Card card1 = new Card(1,Suit.SPADES);
+        Card card2 = new Card(10,Suit.HEARTS);
+
+        playerHand.addCard(card2);
+        playerHand.addCard(card1);
+        assertThat(playerHand.getBlackjackRank(), is(21));
+    }
+;}
