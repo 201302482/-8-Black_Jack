@@ -19,6 +19,6 @@ public class Deck {
         }
     }
     public int size() {
-        return deck.length - cardsUsed;
+        return this.deck.length - cardsUsed;
     }
 }
