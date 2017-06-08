@@ -15,7 +15,7 @@ public class PlayerHandTest {
         PlayerHand playerHand = new PlayerHand();
         Card card = new Card(1,Suit.CLUBS);
         playerHand.addCard(card);
-        assertThat(playerHand.getHand().size(), is(1));
+        assertThat(playerHand.getCardCount(), is(1));
     }
 
     @Test
@@ -34,7 +34,7 @@ public class PlayerHandTest {
         playerHand.addCard(card1);
         playerHand.addCard(card2);
         playerHand.clear();
-        assertThat(playerHand.getHand().size(), is(0));
+        assertThat(playerHand.getCardCount(), is(0));
     }
 
     @Test(expected = NoSuchCardException.class)
@@ -44,5 +44,11 @@ public class PlayerHandTest {
         playerHand.addCard(card);
         playerHand.removeCard(card);
         assertThat(playerHand.getCard(0), is(card));
+    }
+
+    @Test
+    public void hand를_아무카드도_넣지않았다면_size는_0이다(){
+        PlayerHand playerHand = new PlayerHand();
+        assertThat(playerHand.getCardCount(), is(0));
     }
 }
