@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="-TEAM8-Black_Jack" />
+        <module name="TEAM8_Black_Jack" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
