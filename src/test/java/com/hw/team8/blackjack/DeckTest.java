@@ -12,6 +12,6 @@ public class DeckTest {
     @Test
     public void 덱_만들기(){
         Deck deck = new Deck();
-        assertThat(deck.size(),is(52));
+        assertThat(deck.cardsLeft(),is(52));
     }
 }
