@@ -9,7 +9,10 @@ import static org.junit.Assert.assertTrue;
 /**
  * Created by com on 2017-06-08.
  */
+
+
 public class CardsEvaluatorTest {
+
 
     @Test
     public void 결과값이_21보다_크다() {
