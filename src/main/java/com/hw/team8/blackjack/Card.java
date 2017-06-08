@@ -9,13 +9,15 @@ class Card implements Comparable<Card>{
     private int rank;
     private Suit suit;
 
-    public Card(int theRank, Suit theSuit){
+    public Card(int theRank, Suit theSuit) {
         rank = theRank;
         suit = theSuit;
-        if (theRank > 13){
+        if (theRank > 13) {
             throw new NoSuchRankException();
         }
     }
+
+
 
     public int compareTo(Card o){
         return this.getRank() - o.getRank();
