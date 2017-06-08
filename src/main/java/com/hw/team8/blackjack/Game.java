@@ -22,6 +22,7 @@ public class Game {
             do {
                 System.out.println("How many dollars do you want to bet?  (Enter 0 to end.)");
                 bet = scanner.nextInt();
+                scanner.nextLine();
                 if (bet < 0 || bet > money) {
                     System.out.println("betting money must be between 0 to " + money);
                 }
@@ -89,8 +90,8 @@ public class Game {
             System.out.print("Hit (H) or Stand (S)? ");
             char userAction;
             do {
-                scanner.nextLine();
                 userAction = Character.toUpperCase(scanner.nextLine().charAt(0));
+                System.out.println("sfsfs");
                 if (userAction != 'H' && userAction != 'S')
                     System.out.println("Please respond H or S:  ");
             } while (userAction != 'H' && userAction != 'S');
