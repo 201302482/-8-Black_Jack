@@ -16,15 +16,21 @@ public class Deck {
         cardsUsed = 0;
         deck = new ArrayList<Card>();
         for(Suit suit : Suit.values()){
-            for(int card_index=1; card_index<=13; card_index++){
-                deck.add(new Card(card_index,suit));
+            for(int rank=1; rank<=13; rank++){
+                deck.add(new Card(rank,suit));
             }
         }
     }
     public void shuffle(){
         Collections.shuffle(deck);
     }
-    public int size() {
+    public Card dealCard(){
+        if(cardsLeft() == 52){
+            shuffle();
+        }
+        return deck.remove(0);
+    }
+    public int cardsLeft() {
         return this.deck.size();
     }
 
