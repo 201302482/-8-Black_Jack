@@ -3,10 +3,10 @@
     * class BlackjackApplication
     * class Game
     * class Player
-    * class PlayerHand
-    * class Card
-    * class Deck
-    * class CardsEvaluator
+    * class PlayerHand      (이상현)
+    * class Card            (석지훈)
+    * class Deck            (정윤수)
+    * class CardsEvaluator  (임대영)
     * enum  Suit
     * enum  GameResult
 
