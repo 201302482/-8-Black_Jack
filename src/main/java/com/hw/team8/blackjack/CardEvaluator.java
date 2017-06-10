@@ -29,6 +29,33 @@ public class CardEvaluator {
         return val;
     }
 
+    public GameResult isBlackJack(Player player, Player dealer){
+        System.out.println("Dealer has the " + dealer.getPlayerHand().getCard(0)
+                + " and the " + dealer.getPlayerHand().getCard(1) + ".");
+        System.out.println("User has the " + player.getPlayerHand().getCard(0)
+                + " and the " + player.getPlayerHand().getCard(1) + ".");
+        System.out.println();
+        if(getBlackjackRank(player) == 21){
+            print_TwoCards(player, dealer);
+            System.out.println("Dealer has Blackjack.  Dealer wins.");
+            return GameResult.LOSE;
+        }
+        else if (getBlackjackRank(player) == 21) {
+            print_TwoCards(player, dealer);
+            System.out.println("You have Blackjack.  You win.");
+            return GameResult.WIN;
+        }
+        return null;
+    }
+
+    private void print_TwoCards(Player player, Player dealer) {
+        System.out.println("Dealer has the " + dealer.getPlayerHand().getCard(0)
+                + " and the " + dealer.getPlayerHand().getCard(1) + ".");
+        System.out.println("User has the " + player.getPlayerHand().getCard(0)
+                + " and the " + player.getPlayerHand().getCard(1) + ".");
+        System.out.println();
+    }
+
     public GameResult getGameResult(Player player, Player dealer) {
         if (getBlackjackRank(dealer) == getBlackjackRank(player)) {
             return GameResult.DRAW;

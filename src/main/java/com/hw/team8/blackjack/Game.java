@@ -77,7 +77,7 @@ public class Game {
         dealer.getPlayerHand().addCard(deck.dealCard());
         dealer.getPlayerHand().addCard(deck.dealCard());
 
-        gameResult = isBlackJack();
+        gameResult = evaluator.isBlackJack(player, dealer);
         if(gameResult != null){
             return gameResult;
         }
@@ -127,27 +127,6 @@ public class Game {
         return evaluator.getGameResult(player, dealer);
     }
 
-    public GameResult isBlackJack(){
-        if(evaluator.getBlackjackRank(dealer) == 21){
-            print_TwoCards(player, dealer);
-            System.out.println("Dealer has Blackjack.  Dealer wins.");
-            return GameResult.LOSE;
-        }
-        else if (evaluator.getBlackjackRank(player) == 21) {
-            print_TwoCards(player, dealer);
-            System.out.println("You have Blackjack.  You win.");
-            return GameResult.WIN;
-        }
-        return null;
-    }
-
-    public void print_TwoCards(Player player, Player dealer) {
-        System.out.println("Dealer has the " + dealer.getPlayerHand().getCard(0)
-                + " and the " + dealer.getPlayerHand().getCard(1) + ".");
-        System.out.println("User has the " + player.getPlayerHand().getCard(0)
-                + " and the " + player.getPlayerHand().getCard(1) + ".");
-        System.out.println();
-    }
 
     public char getUserAction() {
         System.out.print("Hit (H) or Stand (S)? ");
