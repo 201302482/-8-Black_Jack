@@ -17,6 +17,7 @@ public class GameTest {
         assertThat(game.getPlayerMoney(), is(100));
     }
 
+    
     @Test
     public void Player가_이겼다() {
         Player player = new Player(new PlayerHand());
