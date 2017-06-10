@@ -14,7 +14,7 @@ public class GameTest {
     @Test
     public void 시작_금액은_100달러이다() {
         Game game = new Game();
-        assertThat(game.getMoney(), is(100));
+        assertThat(game.getPlayerMoney(), is(100));
     }
 
     @Test
