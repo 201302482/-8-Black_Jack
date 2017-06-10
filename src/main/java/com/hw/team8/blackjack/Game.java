@@ -129,6 +129,10 @@ public class Game {
         }
         System.out.println("Dealer's total is " + dealer.getBlackjackRank());
 
+        return getGameResult(player, dealer);
+    }
+
+    public GameResult getGameResult(Player player, Player dealer) {
         if (dealer.getBlackjackRank() == player.getBlackjackRank()) {
             return GameResult.DRAW;
         }
