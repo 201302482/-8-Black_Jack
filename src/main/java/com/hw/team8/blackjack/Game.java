@@ -1,10 +1,13 @@
 package com.hw.team8.blackjack;
 
+import lombok.Data;
+
 import java.util.Scanner;
 
 /**
  * Created by com on 2017-06-08.
  */
+@Data
 public class Game {
     Scanner scanner;
     int money;
@@ -18,7 +21,7 @@ public class Game {
     public void start() {
         System.out.println("Welcome to the Black Jack");
         while (true) {
-            System.out.println("You have " + money + "dollars");
+            System.out.println("You have " + money + " dollars");
             do {
                 System.out.println("How many dollars do you want to bet?  (Enter 0 to end.)");
                 bet = scanner.nextInt();
@@ -27,25 +30,30 @@ public class Game {
                     System.out.println("betting money must be between 0 to " + money);
                 }
             } while (bet < 0 || bet > money);
-            if (bet == 0) {
-            break;
-            }
-            userWins = playBlackjack();
-            if(userWins.equals(GameResult.WIN)){
-                money+=bet;
-            }
-            else if(userWins.equals(GameResult.LOSE)){
-                money-=bet;
-            }
-            else {
-                System.out.println("Draw!!");
-            }
-            if(money == 0){
-                System.out.println("\"Looks like you've are out of money!\"");
-                break;
-            }
+            if (betting_calculate(bet)) break;
         }
         System.out.println("You leave with $"+money);
+    }
+
+    private boolean betting_calculate(int bet) {
+        if (bet == 0) {
+            return true;
+        }
+        userWins = playBlackjack();
+        if(userWins.equals(GameResult.WIN)){
+            money+=bet;
+        }
+        else if(userWins.equals(GameResult.LOSE)){
+            money-=bet;
+        }
+        else {
+            System.out.println("Draw!!");
+        }
+        if(money == 0){
+            System.out.println("\"Looks like you've are out of money!\"");
+            return true;
+        }
+        return false;
     }
 
     private GameResult playBlackjack() {
@@ -86,12 +94,10 @@ public class Game {
             System.out.println();
             System.out.println("Your total is " + player.getBlackjackRank());
             System.out.println("Dealer is showing the " + dealer.getCard(0));
-
             System.out.print("Hit (H) or Stand (S)? ");
             char userAction;
             do {
                 userAction = Character.toUpperCase(scanner.nextLine().charAt(0));
-                System.out.println("sfsfs");
                 if (userAction != 'H' && userAction != 'S')
                     System.out.println("Please respond H or S:  ");
             } while (userAction != 'H' && userAction != 'S');
