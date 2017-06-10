@@ -140,20 +140,25 @@ public class Game {
     }
 
     public GameResult isBlackJack(Player player, Player dealer){
+        if(evaluator.getBlackjackRank(player) == 21){
+            print_TwoCards(player, dealer);
+            System.out.println("Dealer has Blackjack.  Dealer wins.");
+            return GameResult.LOSE;
+        }
+        else if (evaluator.getBlackjackRank(player) == 21) {
+            print_TwoCards(player, dealer);
+            System.out.println("You have Blackjack.  You win.");
+            return GameResult.WIN;
+        }
+        return null;
+    }
+
+    public void print_TwoCards(Player player, Player dealer) {
         System.out.println("Dealer has the " + dealer.getPlayerHand().getCard(0)
                 + " and the " + dealer.getPlayerHand().getCard(1) + ".");
         System.out.println("User has the " + player.getPlayerHand().getCard(0)
                 + " and the " + player.getPlayerHand().getCard(1) + ".");
         System.out.println();
-        if(evaluator.getBlackjackRank(player) == 21){
-            System.out.println("Dealer has Blackjack.  Dealer wins.");
-            return GameResult.LOSE;
-        }
-        else if (evaluator.getBlackjackRank(player) == 21) {
-            System.out.println("You have Blackjack.  You win.");
-            return GameResult.WIN;
-        }
-        return null;
     }
 
     public char getUserAction() {
