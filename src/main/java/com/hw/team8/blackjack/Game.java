@@ -1,7 +1,7 @@
 package com.hw.team8.blackjack;
 
 import lombok.Data;
-
+import java.util.regex.*;
 import java.util.Scanner;
 
 /**
@@ -130,12 +130,18 @@ public class Game {
 
     public char getUserAction() {
         System.out.print("Hit (H) or Stand (S)? ");
-        char userAction;
+        String userAction;
+        boolean end = false;
         do {
-            userAction = Character.toUpperCase(scanner.nextLine().charAt(0));
-            if (userAction != 'H' && userAction != 'S')
+            Pattern p = Pattern.compile("^[SH]$");
+            userAction =scanner.nextLine().toUpperCase();
+            Matcher m = p.matcher(userAction);
+            if (!m.find())
                 System.out.println("Please respond H or S:  ");
-        } while (userAction != 'H' && userAction != 'S');
-        return userAction;
+            else{
+                end = true;
+            }
+        } while (!end);
+        return userAction.charAt(0);
     }
 }
