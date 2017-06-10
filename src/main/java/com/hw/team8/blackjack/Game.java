@@ -123,24 +123,9 @@ public class Game {
         }
         System.out.println("Dealer's total is " + evaluator.getBlackjackRank(dealer));
 
-        return getGameResult();
+        return evaluator.getGameResult(player, dealer);
     }
 
-    public GameResult getGameResult() {
-        if (evaluator.getBlackjackRank(dealer) == evaluator.getBlackjackRank(player)) {
-            return GameResult.DRAW;
-        }
-        else if (evaluator.getBlackjackRank(dealer) > evaluator.getBlackjackRank(player)) {
-            System.out.println("Dealer wins, " + evaluator.getBlackjackRank(dealer)
-                    + " points to " + evaluator.getBlackjackRank(player) + ".");
-            return GameResult.LOSE;
-        }
-        else {
-            System.out.println("You win, " + evaluator.getBlackjackRank(player)
-                    + " points to " + evaluator.getBlackjackRank(dealer) + ".");
-            return GameResult.WIN;
-        }
-    }
     public GameResult isBlackJack(){
         System.out.println("Dealer has the " + dealer.getPlayerHand().getCard(0)
                 + " and the " + dealer.getPlayerHand().getCard(1) + ".");
