@@ -143,6 +143,7 @@ public class Game {
             return GameResult.WIN;
         }
     }
+    
 
     public char getUserAction() {
         System.out.print("Hit (H) or Stand (S)? ");
