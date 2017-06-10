@@ -20,7 +20,6 @@ public class GameTest {
     @Test
     public void 플레이어의_카드가_21이면_이긴다() {
         Game game = new Game();
-
         PlayerHand playerHand = game.getPlayer().getPlayerHand();
         PlayerHand dealerHand = game.getDealer().getPlayerHand();
         playerHand.addCard(new Card(1,Suit.DIAMONDS));
