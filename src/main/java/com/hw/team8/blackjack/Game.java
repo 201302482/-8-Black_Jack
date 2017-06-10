@@ -94,13 +94,7 @@ public class Game {
             System.out.println();
             System.out.println("Your total is " + player.getBlackjackRank());
             System.out.println("Dealer is showing the " + dealer.getCard(0));
-            System.out.print("Hit (H) or Stand (S)? ");
-            char userAction;
-            do {
-                userAction = Character.toUpperCase(scanner.nextLine().charAt(0));
-                if (userAction != 'H' && userAction != 'S')
-                    System.out.println("Please respond H or S:  ");
-            } while (userAction != 'H' && userAction != 'S');
+            char userAction = getUserAction();
 
             if (userAction == 'S') {
                 break;
@@ -148,6 +142,17 @@ public class Game {
                     + " points to " + dealer.getBlackjackRank() + ".");
             return GameResult.WIN;
         }
+    }
+
+    public char getUserAction() {
+        System.out.print("Hit (H) or Stand (S)? ");
+        char userAction;
+        do {
+            userAction = Character.toUpperCase(scanner.nextLine().charAt(0));
+            if (userAction != 'H' && userAction != 'S')
+                System.out.println("Please respond H or S:  ");
+        } while (userAction != 'H' && userAction != 'S');
+        return userAction;
     }
 
 }
