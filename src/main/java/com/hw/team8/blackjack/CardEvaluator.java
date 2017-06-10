@@ -30,11 +30,6 @@ public class CardEvaluator {
     }
 
     public GameResult isBlackJack(Player player, Player dealer){
-        System.out.println("Dealer has the " + dealer.getPlayerHand().getCard(0)
-                + " and the " + dealer.getPlayerHand().getCard(1) + ".");
-        System.out.println("User has the " + player.getPlayerHand().getCard(0)
-                + " and the " + player.getPlayerHand().getCard(1) + ".");
-        System.out.println();
         if(getBlackjackRank(dealer) == 21){
             print_TwoCards(player, dealer);
             System.out.println("Dealer has Blackjack.  Dealer wins.");
