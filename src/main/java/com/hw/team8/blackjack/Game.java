@@ -9,11 +9,12 @@ import java.util.Scanner;
  */
 @Data
 public class Game {
-    Player player, dealer;
+    private Player player, dealer;
     Scanner scanner;
-    int playerMoney, betMoney;
-    GameResult userWins;
-    CardEvaluator evaluator;
+    private int playerMoney;
+    private int betMoney;
+    private GameResult userWins;
+    private CardEvaluator evaluator = new CardEvaluator();
 
     public Game(){
         player = new Player(new PlayerHand());
@@ -123,31 +124,11 @@ public class Game {
         }
         System.out.println("Dealer's total is " + evaluator.getBlackjackRank(dealer));
 
-        return getGameResult();
+        return evaluator.getGameResult(player, dealer);
     }
 
-    public GameResult getGameResult() {
-        if (evaluator.getBlackjackRank(dealer) == evaluator.getBlackjackRank(player)) {
-            return GameResult.DRAW;
-        }
-        else if (evaluator.getBlackjackRank(dealer) > evaluator.getBlackjackRank(player)) {
-            System.out.println("Dealer wins, " + evaluator.getBlackjackRank(dealer)
-                    + " points to " + evaluator.getBlackjackRank(player) + ".");
-            return GameResult.LOSE;
-        }
-        else {
-            System.out.println("You win, " + evaluator.getBlackjackRank(player)
-                    + " points to " + evaluator.getBlackjackRank(dealer) + ".");
-            return GameResult.WIN;
-        }
-    }
     public GameResult isBlackJack(){
-        System.out.println("Dealer has the " + dealer.getPlayerHand().getCard(0)
-                + " and the " + dealer.getPlayerHand().getCard(1) + ".");
-        System.out.println("User has the " + player.getPlayerHand().getCard(0)
-                + " and the " + player.getPlayerHand().getCard(1) + ".");
-        System.out.println();
-        if(evaluator.getBlackjackRank(player) == 21){
+        if(evaluator.getBlackjackRank(dealer) == 21){
             print_TwoCards(player, dealer);
             System.out.println("Dealer has Blackjack.  Dealer wins.");
             return GameResult.LOSE;

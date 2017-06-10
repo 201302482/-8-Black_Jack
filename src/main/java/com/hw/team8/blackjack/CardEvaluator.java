@@ -29,4 +29,20 @@ public class CardEvaluator {
         return val;
     }
 
+    public GameResult getGameResult(Player player, Player dealer) {
+        if (getBlackjackRank(dealer) == getBlackjackRank(player)) {
+            return GameResult.DRAW;
+        }
+        else if (getBlackjackRank(dealer) > getBlackjackRank(player)) {
+            System.out.println("Dealer wins, " + getBlackjackRank(dealer)
+                    + " points to " + getBlackjackRank(player) + ".");
+            return GameResult.LOSE;
+        }
+        else {
+            System.out.println("You win, " + getBlackjackRank(player)
+                    + " points to " + getBlackjackRank(dealer) + ".");
+            return GameResult.WIN;
+        }
+    }
+
 }
