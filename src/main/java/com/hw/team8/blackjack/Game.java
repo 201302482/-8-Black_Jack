@@ -35,7 +35,7 @@ public class Game {
         System.out.println("You leave with $"+money);
     }
 
-    private boolean betting_calculate(int bet) {
+    public boolean betting_calculate(int bet) {
         if (bet == 0) {
             return true;
         }
@@ -58,6 +58,7 @@ public class Game {
 
     private GameResult playBlackjack() {
         Deck deck = new Deck();
+        GameResult gameResult;
         Player player = new Player();
         Player dealer = new Player();
 
@@ -66,25 +67,10 @@ public class Game {
 
         dealer.addCard(deck.dealCard());
         dealer.addCard(deck.dealCard());
+        gameResult = isBlackJack(player,dealer);
 
-        if (dealer.getBlackjackRank() == 21) {
-            System.out.println("Dealer has the " + dealer.getCard(0)
-                    + " and the " + dealer.getCard(1) + ".");
-            System.out.println("User has the " + player.getCard(0)
-                    + " and the " + player.getCard(1) + ".");
-            System.out.println();
-            System.out.println("Dealer has Blackjack.  Dealer wins.");
-            return GameResult.LOSE;
-        }
-
-        if (player.getBlackjackRank() == 21) {
-            System.out.println("Dealer has the " + dealer.getCard(0)
-                    + " and the " + dealer.getCard(1) + ".");
-            System.out.println("User has the " + player.getCard(0)
-                    + " and the " + player.getCard(1) + ".");
-            System.out.println();
-            System.out.println("You have Blackjack.  You win.");
-            return GameResult.WIN;
+        if(gameResult != null){
+            return gameResult;
         }
 
         while(true) {
@@ -149,5 +135,20 @@ public class Game {
             return GameResult.WIN;
         }
     }
-
+    public GameResult isBlackJack(Player player, Player dealer){
+        System.out.println("Dealer has the " + dealer.getCard(0)
+                + " and the " + dealer.getCard(1) + ".");
+        System.out.println("User has the " + player.getCard(0)
+                + " and the " + player.getCard(1) + ".");
+        System.out.println();
+        if(dealer.getBlackjackRank() == 21){
+            System.out.println("Dealer has Blackjack.  Dealer wins.");
+            return GameResult.LOSE;
+        }
+        else if (player.getBlackjackRank() == 21) {
+            System.out.println("You have Blackjack.  You win.");
+            return GameResult.WIN;
+        }
+        return null;
+    }
 }
