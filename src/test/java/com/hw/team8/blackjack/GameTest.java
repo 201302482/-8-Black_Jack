@@ -35,13 +35,13 @@ public class GameTest {
         PlayerHand dealerHand = game.getDealer().getPlayerHand();
 
         Card playercard1 = new Card(10,Suit.CLUBS);
-        Card playercard2 = new Card(11,Suit.HEARTS);
+        Card playercard2 = new Card(9,Suit.HEARTS);
         Card dealercard1 = new Card(4,Suit.DIAMONDS);
-        Card dealercard2 = new Card(12,Suit.SPADES);
-        playerHand.addCard(new Card(10, Suit.CLUBS));
-        playerHand.addCard(new Card(3, Suit.DIAMONDS));
-        dealerHand.addCard(new Card(2, Suit.HEARTS));
-        dealerHand.addCard(new Card(2, Suit.CLUBS));
+        Card dealercard2 = new Card(8,Suit.SPADES);
+        playerHand.addCard(playercard1);
+        playerHand.addCard(playercard2);
+        dealerHand.addCard(dealercard1);
+        dealerHand.addCard(dealercard2);
         CardEvaluator cardEvaluator = new CardEvaluator();
 
         boolean result = false;
