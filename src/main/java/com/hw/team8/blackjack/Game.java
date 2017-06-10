@@ -9,6 +9,7 @@ import java.util.Scanner;
  */
 @Data
 public class Game {
+    Player player, dealer;
     Scanner scanner;
     int playerMoney;
     int betMoney;
@@ -16,6 +17,8 @@ public class Game {
     CardEvaluator evaluator = new CardEvaluator();
 
     public Game(){
+        player = new Player(new PlayerHand());
+        dealer = new Player(new PlayerHand());
         scanner = new Scanner(System.in);
         playerMoney = 100;
     }
@@ -63,8 +66,7 @@ public class Game {
 
     private GameResult playBlackjack() {
         Deck deck = new Deck();
-        Player player = new Player(new PlayerHand());
-        Player dealer = new Player(new PlayerHand());
+
         GameResult gameResult;
 
         player.getPlayerHand().addCard(deck.dealCard());
@@ -73,7 +75,7 @@ public class Game {
         dealer.getPlayerHand().addCard(deck.dealCard());
         dealer.getPlayerHand().addCard(deck.dealCard());
 
-        gameResult = isBlackJack(player,dealer);
+        gameResult = isBlackJack();
         if(gameResult != null){
             return gameResult;
         }
@@ -120,10 +122,10 @@ public class Game {
         }
         System.out.println("Dealer's total is " + evaluator.getBlackjackRank(dealer));
 
-        return getGameResult(player, dealer);
+        return getGameResult();
     }
 
-    public GameResult getGameResult(Player player, Player dealer) {
+    public GameResult getGameResult() {
         if (evaluator.getBlackjackRank(dealer) == evaluator.getBlackjackRank(player)) {
             return GameResult.DRAW;
         }
@@ -138,8 +140,12 @@ public class Game {
             return GameResult.WIN;
         }
     }
-
-    public GameResult isBlackJack(Player player, Player dealer){
+    public GameResult isBlackJack(){
+        System.out.println("Dealer has the " + dealer.getPlayerHand().getCard(0)
+                + " and the " + dealer.getPlayerHand().getCard(1) + ".");
+        System.out.println("User has the " + player.getPlayerHand().getCard(0)
+                + " and the " + player.getPlayerHand().getCard(1) + ".");
+        System.out.println();
         if(evaluator.getBlackjackRank(player) == 21){
             print_TwoCards(player, dealer);
             System.out.println("Dealer has Blackjack.  Dealer wins.");
