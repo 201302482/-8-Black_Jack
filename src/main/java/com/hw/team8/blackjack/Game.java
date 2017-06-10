@@ -9,11 +9,12 @@ import java.util.Scanner;
  */
 @Data
 public class Game {
-    Player player, dealer;
+    private Player player, dealer;
     Scanner scanner;
-    int playerMoney, betMoney;
-    GameResult userWins;
-    CardEvaluator evaluator;
+    private int playerMoney;
+    private int betMoney;
+    private GameResult userWins;
+    private CardEvaluator evaluator = new CardEvaluator();
 
     public Game(){
         player = new Player(new PlayerHand());
@@ -125,9 +126,6 @@ public class Game {
 
         return evaluator.getGameResult(player, dealer);
     }
-
-
-
 
 
     public char getUserAction() {
