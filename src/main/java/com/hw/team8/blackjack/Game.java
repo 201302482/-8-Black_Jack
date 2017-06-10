@@ -11,17 +11,18 @@ import java.util.Scanner;
 public class Game {
     Player player, dealer;
     Scanner scanner;
-    int playerMoney;
-    int betMoney;
+    int playerMoney, betMoney;
     GameResult userWins;
-    CardEvaluator evaluator = new CardEvaluator();
+    CardEvaluator evaluator;
 
     public Game(){
         player = new Player(new PlayerHand());
         dealer = new Player(new PlayerHand());
         scanner = new Scanner(System.in);
+        evaluator = new CardEvaluator();
         playerMoney = 100;
     }
+
     public void start() {
         System.out.println("Welcome to the Black Jack");
         while (true) {
