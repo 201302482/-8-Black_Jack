@@ -68,7 +68,8 @@ public class Game {
 
     private GameResult playBlackjack() {
         Deck deck = new Deck();
-
+        player.getPlayerHand().clear();
+        dealer.getPlayerHand().clear();
         GameResult gameResult;
 
         player.getPlayerHand().addCard(deck.dealCard());
