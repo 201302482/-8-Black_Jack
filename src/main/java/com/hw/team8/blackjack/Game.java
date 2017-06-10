@@ -10,30 +10,34 @@ import java.util.Scanner;
 @Data
 public class Game {
     Scanner scanner;
-    int money;
-    int bet;
+    int playerMoney;
+    int betMoney;
     GameResult userWins;
     CardEvaluator evaluator = new CardEvaluator();
 
     public Game(){
         scanner = new Scanner(System.in);
-        money = 100;
+        playerMoney = 100;
     }
     public void start() {
         System.out.println("Welcome to the Black Jack");
         while (true) {
-            System.out.println("You have " + money + " dollars");
-            do {
-                System.out.println("How many dollars do you want to bet?  (Enter 0 to end.)");
-                bet = scanner.nextInt();
-                scanner.nextLine();
-                if (bet < 0 || bet > money) {
-                    System.out.println("betting money must be between 0 to " + money);
-                }
-            } while (bet < 0 || bet > money);
-            if (betting_calculate(bet)) break;
+            System.out.println("You have " + playerMoney + " dollars");
+            getBettingMoneyFromUser();
+            if (betting_calculate(betMoney)) break;
         }
-        System.out.println("You leave with $"+money);
+        System.out.println("You leave with $"+ playerMoney);
+    }
+
+    public void getBettingMoneyFromUser() {
+        do {
+            System.out.println("How many dollars do you want to betMoney?  (Enter 0 to end.)");
+            betMoney = scanner.nextInt();
+            scanner.nextLine();
+            if (betMoney < 0 || betMoney > playerMoney) {
+                System.out.println("betting playerMoney must be between 0 to " + playerMoney);
+            }
+        } while (betMoney < 0 || betMoney > playerMoney);
     }
 
     public boolean betting_calculate(int bet) {
@@ -42,16 +46,16 @@ public class Game {
         }
         userWins = playBlackjack();
         if(userWins.equals(GameResult.WIN)){
-            money+=bet;
+            playerMoney +=bet;
         }
         else if(userWins.equals(GameResult.LOSE)){
-            money-=bet;
+            playerMoney -=bet;
         }
         else {
             System.out.println("Draw!!");
         }
-        if(money == 0){
-            System.out.println("\"Looks like you've are out of money!\"");
+        if(playerMoney == 0){
+            System.out.println("\"Looks like you've are out of playerMoney!\"");
             return true;
         }
         return false;
@@ -115,6 +119,11 @@ public class Game {
             }
         }
         System.out.println("Dealer's total is " + evaluator.getBlackjackRank(dealer));
+
+        return getGameResult(player, dealer);
+    }
+
+    public GameResult getGameResult(Player player, Player dealer) {
         if (evaluator.getBlackjackRank(dealer) == evaluator.getBlackjackRank(player)) {
             return GameResult.DRAW;
         }
