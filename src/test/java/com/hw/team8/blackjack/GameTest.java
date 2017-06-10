@@ -26,7 +26,7 @@ public class GameTest {
         playerHand.addCard(new Card(10,Suit.DIAMONDS));
         dealerHand.addCard(new Card(4,Suit.DIAMONDS));
         dealerHand.addCard(new Card(2,Suit.CLUBS));
-        assertThat(game.isBlackJack(), is(GameResult.WIN));
+        assertThat(game.getEvaluator().isBlackJack(game.getPlayer(), game.getDealer()), is(GameResult.WIN));
     }
     @Test
     public void Player가_이겼다() {
