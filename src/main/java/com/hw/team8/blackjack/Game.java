@@ -9,12 +9,12 @@ import java.util.Scanner;
  */
 @Data
 public class Game {
-    Player player, dealer;
+    private Player player, dealer;
     Scanner scanner;
-    int playerMoney;
-    int betMoney;
-    GameResult userWins;
-    CardEvaluator evaluator = new CardEvaluator();
+    private int playerMoney;
+    private int betMoney;
+    private GameResult userWins;
+    private CardEvaluator evaluator = new CardEvaluator();
 
     public Game(){
         player = new Player(new PlayerHand());
@@ -141,12 +141,7 @@ public class Game {
         }
     }
     public GameResult isBlackJack(){
-        System.out.println("Dealer has the " + dealer.getPlayerHand().getCard(0)
-                + " and the " + dealer.getPlayerHand().getCard(1) + ".");
-        System.out.println("User has the " + player.getPlayerHand().getCard(0)
-                + " and the " + player.getPlayerHand().getCard(1) + ".");
-        System.out.println();
-        if(evaluator.getBlackjackRank(player) == 21){
+        if(evaluator.getBlackjackRank(dealer) == 21){
             print_TwoCards(player, dealer);
             System.out.println("Dealer has Blackjack.  Dealer wins.");
             return GameResult.LOSE;
