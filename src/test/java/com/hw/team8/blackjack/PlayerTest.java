@@ -12,23 +12,25 @@ public class PlayerTest {
 
     @Test
     public void Player가_가지고있는_카드의_합은19다(){
-        Player playerHand = new Player();
+        Player player = new Player(new PlayerHand());
         Card card1 = new Card(10,Suit.SPADES);
         Card card2 = new Card(9,Suit.HEARTS);
+        CardEvaluator cardEvaluator = new CardEvaluator();
 
-        playerHand.addCard(card2);
-        playerHand.addCard(card1);
-        assertThat(playerHand.getBlackjackRank(), is(19));
+        player.getPlayerHand().addCard(card2);
+        player.getPlayerHand().addCard(card1);
+        assertThat(cardEvaluator.getBlackjackRank(player), is(19));
     }
 
     @Test
     public void Player가_가지고있는_카드의_합은21다(){
-        Player playerHand = new Player();
+        Player player = new Player(new PlayerHand());
         Card card1 = new Card(1,Suit.SPADES);
         Card card2 = new Card(10,Suit.HEARTS);
+        CardEvaluator cardEvaluator = new CardEvaluator();
 
-        playerHand.addCard(card2);
-        playerHand.addCard(card1);
-        assertThat(playerHand.getBlackjackRank(), is(21));
+        player.getPlayerHand().addCard(card2);
+        player.getPlayerHand().addCard(card1);
+        assertThat(cardEvaluator.getBlackjackRank(player), is(21));
     }
 ;}
