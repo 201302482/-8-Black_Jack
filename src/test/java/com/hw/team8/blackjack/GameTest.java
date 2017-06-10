@@ -27,7 +27,7 @@ public class GameTest {
         dealer.getPlayerHand().addCard(new Card(2, Suit.HEARTS));
         dealer.getPlayerHand().addCard(new Card(2, Suit.CLUBS));
         dealer.getPlayerHand().addCard(new Card(2, Suit.SPADES));
-        assertThat(game.isBlackJack(), is(GameResult.LOSE));
+        assertThat(game.evaluator.isBlackJack(player, dealer), is(GameResult.LOSE));
     }
 
     @Test
