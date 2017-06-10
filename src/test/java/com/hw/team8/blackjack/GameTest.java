@@ -15,5 +15,16 @@ public class GameTest {
         Game game = new Game();
         assertThat(game.getPlayerMoney(), is(100));
     }
-
+    @Test
+    public void 플레이어의_카드가_21이면_이긴다(){
+        Game game = new Game();
+        Player player = new Player(new PlayerHand());
+        Player dealer = new Player(new PlayerHand());
+        player.getPlayerHand().addCard(new Card(10,Suit.CLUBS));
+        player.getPlayerHand().addCard(new Card(1,Suit.DIAMONDS));
+        dealer.getPlayerHand().addCard(new Card(2,Suit.HEARTS));
+        dealer.getPlayerHand().addCard(new Card(2,Suit.CLUBS));
+        dealer.getPlayerHand().addCard(new Card(2,Suit.SPADES));
+        assertThat(game.isBlackJack(player,dealer),is(GameResult.LOSE));
+    }
 }
